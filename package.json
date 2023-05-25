@@ -1,0 +1,21 @@
+{
+  "name": "vite-plugin-devcert",
+  "version": "1.0.0",
+  "description": "",
+  "keywords": [
+    "vite-plugin",
+    "https",
+    "devcert"
+  ],
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/xinup/vite-plugin-devcert.git"
+  },
+  "author": "xinup",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/xinup/vite-plugin-devcert/issues"
+  },
+  "homepage": "https://github.com/xinup/vite-plugin-devcert#readme"
+}
