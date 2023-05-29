@@ -1,6 +1,6 @@
-const devcert = require('devcert')
+const devcert = require('devcert');
 
-export default (options) => {
+var index = (options) => {
     return {
         name: 'vite-plugin-devcert',
         config: async (config, env) => {
@@ -16,7 +16,7 @@ export default (options) => {
             }
 
             try {
-                const ssl = await devcert.certificateFor(options?.domain || 'localhost')
+                const ssl = await devcert.certificateFor(options && options.domain || 'localhost');
                 if (ssl && ssl.cert && ssl.key) {
                     return {
                         server: {
@@ -28,11 +28,13 @@ export default (options) => {
                     }
                 }
             } catch (error) {
-                console.error('vite-plugin-devcert', error)
+                console.error('vite-plugin-devcert', error);
             }
 
-            console.warn('vite-plugin-devcert: Failed to create certificate, you can set the certificate by configuring')
+            console.warn('vite-plugin-devcert: Failed to create certificate, you can set the certificate by configuring');
             return {}
         }
     }
-}
+};
+
+export { index as default };
