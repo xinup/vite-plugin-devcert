@@ -4,7 +4,7 @@ var index = (options) => {
     return {
         name: 'vite-plugin-devcert',
         config: async (config, env) => {
-            if (options?.ssl) {
+            if (options && options.ssl) {
                 return {
                     server: {
                         https: {
