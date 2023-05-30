@@ -1,9 +1,19 @@
-Object.defineProperty(exports, "__esModule", { value: true });
+import type { Plugin } from 'vite';
 const devcert = require('devcert');
-exports.default = (options) => {
+
+
+type OptionsTypes = {
+    domain?: string | string[] | undefined,
+    ssl?: {
+        key: string;
+        cert: string;
+    }
+}
+
+export default (options: OptionsTypes): Plugin => {
     return {
         name: 'vite-plugin-devcert',
-        config: async (config, env) => {
+        config: async (config: any, env: any) => {
             if (env.command !== 'serve') {
                 return;
             }
@@ -17,7 +27,7 @@ exports.default = (options) => {
                             cert: ssl.cert,
                         }
                     }
-                };
+                }
             }
             try {
                 const ssl = await devcert.certificateFor(options && options.domain || ['localhost']);
@@ -31,11 +41,10 @@ exports.default = (options) => {
                         }
                     };
                 }
-            }
-            catch (err) {
+            } catch (err) {
                 console.error('vite-plugin-devcert', err);
             }
-            console.warn('vite-plugin-devcert: Failed to create certificate, you can set the certificate by configuring');
+            console.warn('vite-plugin-devcert: Failed to create certificate, you can set the certificate by configuring')
             return {};
         },
     };
