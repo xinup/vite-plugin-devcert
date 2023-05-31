@@ -21,7 +21,7 @@ exports.default = (options) => {
             }
             try {
                 const ssl = await devcert.certificateFor(options && options.domain || ['localhost']);
-                if (ssl && ssl.cert && ssl.key()) {
+                if (ssl && ssl.cert && ssl.key) {
                     return {
                         server: {
                             https: {
